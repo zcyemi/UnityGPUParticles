@@ -1,0 +1,55 @@
+﻿// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSParticleKernel
+
+#define thread_group_size_x 64
+#define thread_group_size_y 1
+
+//#define COLLISION_ON
+
+
+
+// Create a RenderTexture with enableRandomWrite flag and set it
+// with cs.SetTexture
+RWStructuredBuffer<float4> _cbufferPosition;
+RWStructuredBuffer<float4> _cbufferParams;
+
+float _Time;
+float4 _CameraPos;
+float4 _GenRect;
+
+float4 _collider;
+
+float hash(float v){
+	return  frac(v + 52.178*sin(v));
+
+}
+
+float Collision(float bottom,float x,float y,float4 collider){
+	
+	float b = step(x, collider.z+ collider.x) * step(collider.x - collider.z,x) *step(y,collider.y);
+	return lerp(bottom,max(bottom,collider.y),b);
+}
+
+[numthreads(thread_group_size_x, thread_group_size_y, 1)]
+void CSParticleKernel(uint3 id: SV_DispatchThreadID){
+
+	float4 position = _cbufferPosition[id.x];
+	float4 params = _cbufferParams[id.x];
+
+	float timet = _Time - params.w;
+	float newp = position.y -  params.z * timet;
+
+	position.w = Collision(position.w,position.x,newp, _collider);
+
+	if(newp < position.w){
+		
+		//regenerate
+		position.x = _CameraPos.x + _GenRect.x + _GenRect.z* (hash(position.x + position.y) - 0.5);
+		position.y = _CameraPos.y + _GenRect.y + _GenRect.w* (hash(position.x +position.y *94.3461));
+
+		position.w = _CameraPos.w;
+
+		_cbufferPosition[id.x] = position;
+		_cbufferParams[id.x].w = _Time;
+	}
+}

@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01_GPUInstancing", "Assembly-CSharp.csproj", "{7FE21C8F-90AD-5E9D-9101-D57AE0986DCC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01_GPUInstancing", "Assembly-CSharp-Editor.csproj", "{A475EA88-3E62-5810-BE7D-247C6B51B2F0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7FE21C8F-90AD-5E9D-9101-D57AE0986DCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FE21C8F-90AD-5E9D-9101-D57AE0986DCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FE21C8F-90AD-5E9D-9101-D57AE0986DCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FE21C8F-90AD-5E9D-9101-D57AE0986DCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A475EA88-3E62-5810-BE7D-247C6B51B2F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A475EA88-3E62-5810-BE7D-247C6B51B2F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A475EA88-3E62-5810-BE7D-247C6B51B2F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A475EA88-3E62-5810-BE7D-247C6B51B2F0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
